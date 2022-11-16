@@ -1,25 +1,14 @@
-import { useState } from "react";
-import "./App.css";
-
-function App() {
-  const [count, setCount] = useState(0);
-
-  return (
-    <div className="App">
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  );
-}
+import React from 'react';
+import {BrowserRouter as Routes, Route} from 'react-router-dom';
+import Pokedex from './containers/Pokedex';
+import PokemonInfoCard from './components/PokemonInfoCard';
+import GlobalStyle from './global';
+const App: React.FC = () => (
+	<Routes>
+		<GlobalStyle />
+		<Route path='/' element={<Pokedex />} />
+		<Route path='/pokemon/:pokemonId' element={<PokemonInfoCard/>} />
+	</Routes>
+);
 
 export default App;
